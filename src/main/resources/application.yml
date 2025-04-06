@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: MS-Users
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/tc_f5_ms_user?createDatabaseIfNotExist=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+  rabbitmq:
+    host: localhost
+    username: admin
+    password: rabbit
+    port: 5672
+    virtual-host: /
+    listener:
+      simple:
+        default-requeue-rejected: false
+        retry:
+          enabled: true
+          max-attempts: 3
+          initial-interval: 5s
+          multiplier: 2
+
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 30
+    instanceId: ${spring.application.name}
+
+keycloak:
+  bearer-only: true
+  resource: tc-fiap
+  use-resource-role-mappings: true
+  ssl-required: external
+  principal-attribute: preferred_username

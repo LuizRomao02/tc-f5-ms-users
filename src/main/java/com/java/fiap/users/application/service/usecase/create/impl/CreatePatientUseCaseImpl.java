@@ -1,6 +1,7 @@
 package com.java.fiap.users.application.service.usecase.create.impl;
 
 import com.java.fiap.users.application.dto.form.PatientForm;
+import com.java.fiap.users.application.service.annotation.NotifyUserRegister;
 import com.java.fiap.users.application.service.usecase.create.CreatePatientUseCase;
 import com.java.fiap.users.domain.model.Patient;
 import com.java.fiap.users.domain.repository.PatientRepository;
@@ -14,6 +15,7 @@ public class CreatePatientUseCaseImpl implements CreatePatientUseCase {
   private final PatientRepository patientRepository;
 
   @Override
+  @NotifyUserRegister
   public Patient execute(PatientForm form) {
     Patient patient =
         Patient.builder()

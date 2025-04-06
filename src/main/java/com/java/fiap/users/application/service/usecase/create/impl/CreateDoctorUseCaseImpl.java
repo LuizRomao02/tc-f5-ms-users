@@ -3,6 +3,7 @@ package com.java.fiap.users.application.service.usecase.create.impl;
 import com.java.fiap.users.application.dto.filter.SpecialtyFilter;
 import com.java.fiap.users.application.dto.form.DoctorForm;
 import com.java.fiap.users.application.exception.DoctorException;
+import com.java.fiap.users.application.service.annotation.NotifyUserRegister;
 import com.java.fiap.users.application.service.usecase.create.CreateDoctorUseCase;
 import com.java.fiap.users.application.service.usecase.get.GetListSpecialtyUseCase;
 import com.java.fiap.users.domain.model.Doctor;
@@ -21,6 +22,7 @@ public class CreateDoctorUseCaseImpl implements CreateDoctorUseCase {
   private final GetListSpecialtyUseCase getSpecialtyUseCase;
 
   @Override
+  @NotifyUserRegister
   public Doctor execute(DoctorForm form) {
     SpecialtyFilter specialtyFilter = SpecialtyFilter.builder().ids(form.specialtyIds()).build();
     Set<Specialty> specialties = getSpecialtyUseCase.execute(specialtyFilter);
