@@ -13,8 +13,8 @@ public class SpringDocConfigurations {
     return new OpenAPI()
         .info(
             new Info()
-                .title("User API")
+                .title("Users API")
                 .version("1.0")
-                .description("MS User - Tech Challenge FIAP F5"));
+                .description("Microservices 'Users' - Tech Challenge FIAP F5"));
   }
 }
