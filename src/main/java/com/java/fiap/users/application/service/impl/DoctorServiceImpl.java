@@ -4,7 +4,7 @@ import com.java.fiap.users.application.dto.DoctorDTO;
 import com.java.fiap.users.application.dto.filter.DoctorFilter;
 import com.java.fiap.users.application.dto.form.DoctorForm;
 import com.java.fiap.users.application.service.DoctorService;
-import com.java.fiap.users.application.service.usecase.CreateDoctorUseCase;
+import com.java.fiap.users.application.service.usecase.create.CreateDoctorUseCase;
 import com.java.fiap.users.application.util.ConverterToDTO;
 import com.java.fiap.users.domain.model.Doctor;
 import lombok.RequiredArgsConstructor;

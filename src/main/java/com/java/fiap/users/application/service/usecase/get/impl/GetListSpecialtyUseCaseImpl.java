@@ -1,8 +1,8 @@
-package com.java.fiap.users.application.service.usecase.impl;
+package com.java.fiap.users.application.service.usecase.get.impl;
 
 import com.java.fiap.users.application.dto.filter.SpecialtyFilter;
 import com.java.fiap.users.application.service.specification.SpecialtySpecification;
-import com.java.fiap.users.application.service.usecase.GetListSpecialtyUseCase;
+import com.java.fiap.users.application.service.usecase.get.GetListSpecialtyUseCase;
 import com.java.fiap.users.domain.model.Specialty;
 import com.java.fiap.users.domain.repository.SpecialtyRepository;
 import java.util.HashSet;

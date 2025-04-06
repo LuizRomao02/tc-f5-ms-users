@@ -15,6 +15,8 @@ public class SpecialtyFilter {
 
   private List<String> ids;
   private String name;
+  private List<String> doctorsIds;
+  private String doctorName;
   private LocalDateTime createdAtStart;
   private LocalDateTime createdAtEnd;
 }

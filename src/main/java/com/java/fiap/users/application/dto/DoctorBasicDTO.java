@@ -1,7 +1,5 @@
 package com.java.fiap.users.application.dto;
 
-import java.time.LocalDateTime;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,11 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class SpecialtyDTO {
+public class DoctorBasicDTO {
 
   private String id;
   private String name;
-  private List<DoctorBasicDTO> doctors;
-  private LocalDateTime createdAt;
-  private LocalDateTime updatedAt;
 }

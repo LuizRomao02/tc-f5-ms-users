@@ -1,10 +1,10 @@
-package com.java.fiap.users.application.service.usecase.impl;
+package com.java.fiap.users.application.service.usecase.create.impl;
 
 import com.java.fiap.users.application.dto.filter.SpecialtyFilter;
 import com.java.fiap.users.application.dto.form.DoctorForm;
 import com.java.fiap.users.application.exception.DoctorException;
-import com.java.fiap.users.application.service.usecase.CreateDoctorUseCase;
-import com.java.fiap.users.application.service.usecase.GetListSpecialtyUseCase;
+import com.java.fiap.users.application.service.usecase.create.CreateDoctorUseCase;
+import com.java.fiap.users.application.service.usecase.get.GetListSpecialtyUseCase;
 import com.java.fiap.users.domain.model.Doctor;
 import com.java.fiap.users.domain.model.Specialty;
 import com.java.fiap.users.domain.repository.DoctorRepository;

@@ -1,5 +1,8 @@
 package com.java.fiap.users.application.service.specification;
 
+import com.java.fiap.users.application.dto.enums.FieldsEnum;
+import com.java.fiap.users.domain.model.Doctor;
+import com.java.fiap.users.domain.model.Specialty;
 import jakarta.persistence.criteria.Join;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -24,6 +27,22 @@ public abstract class BaseSpecification<T, P> {
         return null;
       }
       return cb.equal(root.get(attribute).as(value.getClass()), value);
+    };
+  }
+
+  protected Specification<Specialty> hasDoctorWithId(List<String> doctorIds) {
+    return (root, query, cb) -> {
+      if (doctorIds == null || doctorIds.isEmpty()) return null;
+      Join<Specialty, Doctor> join = root.join(FieldsEnum.doctors.name());
+      return join.get("id").in(doctorIds);
+    };
+  }
+
+  protected Specification<Specialty> hasDoctorWithName(String name) {
+    return (root, query, cb) -> {
+      if (name == null || name.isBlank()) return null;
+      Join<Specialty, Doctor> join = root.join(FieldsEnum.doctors.name());
+      return cb.like(cb.lower(join.get(FieldsEnum.name.name())), "%" + name.toLowerCase() + "%");
     };
   }
 

@@ -19,7 +19,9 @@ public class SpecialtySpecification extends BaseSpecification<Specialty, Special
                   attributeBetweenDates(
                       FieldsEnum.createdAt.name(),
                       filter.getCreatedAtStart(),
-                      filter.getCreatedAtEnd()));
+                      filter.getCreatedAtEnd()))
+              .and(hasDoctorWithId(filter.getDoctorsIds()))
+              .and(hasDoctorWithName(filter.getDoctorName()));
 
       return specification.toPredicate(root, query, criteriaBuilder);
     });
