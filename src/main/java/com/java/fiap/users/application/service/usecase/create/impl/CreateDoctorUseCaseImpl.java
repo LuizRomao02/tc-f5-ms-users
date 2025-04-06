@@ -3,7 +3,7 @@ package com.java.fiap.users.application.service.usecase.create.impl;
 import com.java.fiap.users.application.dto.filter.SpecialtyFilter;
 import com.java.fiap.users.application.dto.form.DoctorForm;
 import com.java.fiap.users.application.exception.DoctorException;
-import com.java.fiap.users.application.service.annotation.NotifyUserRegister;
+import com.java.fiap.users.common.NotifyUserRegister;
 import com.java.fiap.users.application.service.usecase.create.CreateDoctorUseCase;
 import com.java.fiap.users.application.service.usecase.get.GetListSpecialtyUseCase;
 import com.java.fiap.users.domain.model.Doctor;

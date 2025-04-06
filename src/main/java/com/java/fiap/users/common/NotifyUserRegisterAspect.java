@@ -1,4 +1,4 @@
-package com.java.fiap.users.application.service.annotation;
+package com.java.fiap.users.common;
 
 import com.java.fiap.users.application.dto.UserRegisteredEvent;
 import com.java.fiap.users.application.dto.enums.UserTypeEnum;
@@ -17,7 +17,7 @@ public class NotifyUserRegisterAspect {
 
   private final UserEventPublisher userEventPublisher;
 
-  @AfterReturning(pointcut = "@annotation(NotifyUserRegister)", returning = "result")
+  @AfterReturning(pointcut = "@annotation(com.java.fiap.users.common.NotifyUserRegister)", returning = "result")
   public void afterUserSaved(Object result) {
     if (result instanceof Doctor savedDoctor) {
       userEventPublisher.sendUserRegisterEvent(

@@ -1,7 +1,7 @@
 package com.java.fiap.users.application.service.usecase.create.impl;
 
 import com.java.fiap.users.application.dto.form.PatientForm;
-import com.java.fiap.users.application.service.annotation.NotifyUserRegister;
+import com.java.fiap.users.common.NotifyUserRegister;
 import com.java.fiap.users.application.service.usecase.create.CreatePatientUseCase;
 import com.java.fiap.users.domain.model.Patient;
 import com.java.fiap.users.domain.repository.PatientRepository;

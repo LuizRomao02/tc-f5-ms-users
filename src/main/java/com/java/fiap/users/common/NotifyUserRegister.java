@@ -1,4 +1,4 @@
-package com.java.fiap.users.application.service.annotation;
+package com.java.fiap.users.common;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
