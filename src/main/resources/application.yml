@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ms-users
+    name: tc-f5-ms-users
   cloud:
     discovery:
       enabled: true

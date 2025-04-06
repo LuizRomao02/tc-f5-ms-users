@@ -17,7 +17,9 @@ public class NotifyUserRegisterAspect {
 
   private final UserEventPublisher userEventPublisher;
 
-  @AfterReturning(pointcut = "@annotation(com.java.fiap.users.common.NotifyUserRegister)", returning = "result")
+  @AfterReturning(
+      pointcut = "@annotation(com.java.fiap.users.common.NotifyUserRegister)",
+      returning = "result")
   public void afterUserSaved(Object result) {
     if (result instanceof Doctor savedDoctor) {
       userEventPublisher.sendUserRegisterEvent(
