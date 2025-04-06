@@ -4,9 +4,9 @@ import com.java.fiap.users.application.dto.enums.FieldsEnum;
 import com.java.fiap.users.application.dto.filter.SpecialtyFilter;
 import com.java.fiap.users.domain.model.Specialty;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class SpecialtySpecification extends BaseSpecification<Specialty, SpecialtyFilter> {
 
   @Override

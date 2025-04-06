@@ -7,5 +7,8 @@ public enum FieldsEnum {
   createdAt,
   updatedAt,
   doctors,
-  specialties
+  specialties,
+  cpf,
+  birthDate,
+  phone
 }

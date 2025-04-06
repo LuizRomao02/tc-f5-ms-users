@@ -8,7 +8,7 @@ public class ApiMapping {
     String MAPPING = API_V1 + "/doctor";
   }
 
-  public interface Patient {
+  public interface PatientApi {
     String MAPPING = API_V1 + "/patient";
   }
 
