@@ -30,7 +30,12 @@ public class CreateDoctorUseCaseImpl implements CreateDoctorUseCase {
     }
 
     Doctor doctor =
-        Doctor.builder().name(form.name()).crm(form.crm()).specialties(specialties).build();
+        Doctor.builder()
+            .name(form.name())
+            .crm(form.crm())
+            .email(form.email())
+            .specialties(specialties)
+            .build();
 
     return doctorRepository.save(doctor);
   }

@@ -23,6 +23,9 @@ public class Doctor extends BaseEntity {
   @Column(nullable = false)
   private String crm;
 
+  @Column(nullable = false)
+  private String email;
+
   @ManyToMany
   @JoinTable(
       name = "doctor_specialties",

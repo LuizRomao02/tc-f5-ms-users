@@ -19,6 +19,7 @@ public class PatientDTO {
   private LocalDate birthDate;
   private String cpf;
   private String phone;
+  private String email;
   private List<SpecialtyBasicDTO> specialties;
   private LocalDateTime createdAt;
   private LocalDateTime updatedAt;

@@ -21,6 +21,7 @@ public class CreatePatientUseCaseImpl implements CreatePatientUseCase {
             .birthDate(form.birthDate())
             .cpf(form.cpf())
             .phone(form.phone())
+            .email(form.email())
             .build();
 
     return patientRepository.save(patient);

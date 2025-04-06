@@ -16,6 +16,7 @@ public class DoctorDTO {
   private String id;
   private String name;
   private String crm;
+  private String email;
   private List<SpecialtyBasicDTO> specialties;
   private LocalDateTime createdAt;
   private LocalDateTime updatedAt;
