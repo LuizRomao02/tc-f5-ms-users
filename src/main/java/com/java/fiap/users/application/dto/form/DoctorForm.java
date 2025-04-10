@@ -7,7 +7,9 @@ import jakarta.validation.constraints.NotNull;
 import java.util.List;
 
 public record DoctorForm(
-    @NotBlank String name,
+    @NotBlank String firstName,
+    @NotBlank String lastName,
     @NotBlank String crm,
     @NotEmpty List<String> specialtyIds,
-    @NotNull @Email String email) {}
+    @NotNull @Email String email,
+    @NotBlank String password) {}

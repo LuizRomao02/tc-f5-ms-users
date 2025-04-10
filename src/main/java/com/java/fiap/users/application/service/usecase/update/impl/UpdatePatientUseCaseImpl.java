@@ -19,7 +19,8 @@ public class UpdatePatientUseCaseImpl implements UpdatePatientUseCase {
     PatientForm form = updatePatientInput.getPatientForm();
     Patient patient = updatePatientInput.getPatient();
 
-    patient.setName(form.name());
+    patient.setFirstName(form.firstName());
+    patient.setLastName(form.lastName());
     patient.setBirthDate(form.birthDate());
     patient.setCpf(form.cpf());
     patient.setPhone(form.phone());

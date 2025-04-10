@@ -19,5 +19,8 @@ public class UserRegisteredEvent implements Serializable {
   private String id;
   private String name;
   private String email;
+  private String password;
+  private String firstName;
+  private String lastName;
   private UserTypeEnum type;
 }

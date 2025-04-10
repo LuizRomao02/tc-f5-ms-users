@@ -7,11 +7,13 @@ import jakarta.validation.constraints.Pattern;
 import java.time.LocalDate;
 
 public record PatientForm(
-    @NotBlank String name,
+    @NotBlank String firstName,
+    @NotBlank String lastName,
     @NotNull LocalDate birthDate,
     @NotBlank String cpf,
     @Pattern(
             regexp = "\\(\\d{2}\\) \\d{4,5}-\\d{4}",
             message = "Phone number must be in the format (XX) XXXXX-XXXX")
         String phone,
-    @NotNull @Email String email) {}
+    @NotNull @Email String email,
+    @NotBlank String password) {}

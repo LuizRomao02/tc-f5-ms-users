@@ -3,6 +3,8 @@ package com.java.fiap.users.domain.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import java.time.LocalDate;
+
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +20,9 @@ import lombok.experimental.SuperBuilder;
 public class Patient extends BaseEntity {
 
   @Column(nullable = false)
-  private String name;
+  private String firstName;
+
+  private String lastName;
 
   @Column(nullable = false)
   private LocalDate birthDate;
@@ -31,4 +35,7 @@ public class Patient extends BaseEntity {
 
   @Column(nullable = false)
   private String email;
+
+  @Transient
+  private String password;
 }

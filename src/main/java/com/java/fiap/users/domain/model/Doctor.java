@@ -18,13 +18,18 @@ import lombok.experimental.SuperBuilder;
 public class Doctor extends BaseEntity {
 
   @Column(nullable = false)
-  private String name;
+  private String firstName;
+
+  private String lastName;
 
   @Column(nullable = false)
   private String crm;
 
   @Column(nullable = false)
   private String email;
+
+  @Transient
+  private String password;
 
   @ManyToMany
   @JoinTable(

@@ -19,7 +19,9 @@ public class CreatePatientUseCaseImpl implements CreatePatientUseCase {
   public Patient execute(PatientForm form) {
     Patient patient =
         Patient.builder()
-            .name(form.name())
+            .firstName(form.firstName())
+            .lastName(form.lastName())
+            .password(form.password())
             .birthDate(form.birthDate())
             .cpf(form.cpf())
             .phone(form.phone())

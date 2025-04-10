@@ -24,7 +24,9 @@ public class NotifyUserRegisterAspect {
     if (result instanceof Doctor savedDoctor) {
       userEventPublisher.sendUserRegisterEvent(
           UserRegisteredEvent.builder()
-              .name(savedDoctor.getName())
+              .firstName(savedDoctor.getFirstName())
+              .lastName(savedDoctor.getLastName())
+              .password(savedDoctor.getPassword())
               .id(savedDoctor.getId())
               .email(savedDoctor.getEmail())
               .type(UserTypeEnum.DOCTOR)
@@ -33,7 +35,9 @@ public class NotifyUserRegisterAspect {
     if (result instanceof Patient savedPatient) {
       userEventPublisher.sendUserRegisterEvent(
           UserRegisteredEvent.builder()
-              .name(savedPatient.getName())
+              .firstName(savedPatient.getFirstName())
+              .lastName(savedPatient.getLastName())
+              .password(savedPatient.getPassword())
               .id(savedPatient.getId())
               .email(savedPatient.getEmail())
               .type(UserTypeEnum.PATIENT)

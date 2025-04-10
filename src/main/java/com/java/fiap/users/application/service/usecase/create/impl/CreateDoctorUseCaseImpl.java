@@ -33,8 +33,10 @@ public class CreateDoctorUseCaseImpl implements CreateDoctorUseCase {
 
     Doctor doctor =
         Doctor.builder()
-            .name(form.name())
+            .firstName(form.firstName())
+            .lastName(form.lastName())
             .crm(form.crm())
+            .password(form.password())
             .email(form.email())
             .specialties(specialties)
             .build();

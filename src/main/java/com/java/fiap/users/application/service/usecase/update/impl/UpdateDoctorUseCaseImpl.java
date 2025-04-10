@@ -34,7 +34,8 @@ public class UpdateDoctorUseCaseImpl implements UpdateDoctorUseCase {
     }
 
     doctor.setSpecialties(specialties);
-    doctor.setName(form.name());
+    doctor.setFirstName(form.firstName());
+    doctor.setLastName(form.lastName());
     doctor.setCrm(form.crm());
 
     return doctorRepository.save(doctor);
