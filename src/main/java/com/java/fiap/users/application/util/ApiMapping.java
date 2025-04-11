@@ -17,10 +17,10 @@ public class ApiMapping {
   }
 
   public interface Actions {
-    String ADD = API_V1 + "/add";
-    String LIST = API_V1 + "/list";
-    String DETAIL = API_V1 + "/detail/{id}";
-    String EDIT = API_V1 + "/edit/{id}";
-    String DELETE = API_V1 + "/delete/{id}";
+    String ADD = "/add";
+    String LIST = "/list";
+    String DETAIL = "/detail/{id}";
+    String EDIT = "/edit/{id}";
+    String DELETE = "/delete/{id}";
   }
 }

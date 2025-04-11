@@ -25,9 +25,10 @@ public class SecurityConfig {
 
   private final JwtAuthConverter jwtAuthConverter;
   private final TokenRevocationValidationFilter tokenRevocationFilter;
+  private final UserValidationFilter userValidationFilter;
 
   private static final String[] PUBLIC_ENDPOINTS = {
-    "/swagger-ui/**", "/v3/api-docs/**", "/auth/**"
+    "/swagger-ui/**", "/v3/api-docs/**", "/patient/add"
   };
 
   @Bean
@@ -40,7 +41,8 @@ public class SecurityConfig {
                     .permitAll()
                     .anyRequest()
                     .authenticated())
-        .addFilterBefore(tokenRevocationFilter, BearerTokenAuthenticationFilter.class)
+        .addFilterAfter(userValidationFilter, BearerTokenAuthenticationFilter.class)
+        .addFilterAfter(tokenRevocationFilter, UserValidationFilter.class)
         .oauth2ResourceServer(
             oauth2 ->
                 oauth2.jwt(

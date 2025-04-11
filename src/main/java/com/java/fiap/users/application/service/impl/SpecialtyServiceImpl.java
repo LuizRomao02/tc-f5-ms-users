@@ -3,6 +3,7 @@ package com.java.fiap.users.application.service.impl;
 import com.java.fiap.users.application.dto.SpecialtyDTO;
 import com.java.fiap.users.application.dto.filter.SpecialtyFilter;
 import com.java.fiap.users.application.dto.form.SpecialtyForm;
+import com.java.fiap.users.application.exception.SpecialtyException;
 import com.java.fiap.users.application.service.SpecialtyService;
 import com.java.fiap.users.application.service.usecase.create.CreateSpecialtyUseCase;
 import com.java.fiap.users.application.service.usecase.delete.DeleteSpecialtyUseCase;
@@ -18,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -74,6 +76,13 @@ public class SpecialtyServiceImpl implements SpecialtyService {
   @Override
   public void deleteSpecialty(String specialtyId) {
     Specialty specialty = getSpecialtyUseCase.execute(specialtyId);
+
+    if (!specialty.getDoctors().isEmpty()) {
+      throw new SpecialtyException(
+          HttpStatus.BAD_REQUEST,
+          "It is not possible to delete a specialty that is still linked to doctors");
+    }
+
     deleteSpecialtyUseCase.execute(specialty);
   }
 }

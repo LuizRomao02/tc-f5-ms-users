@@ -5,6 +5,7 @@ import com.java.fiap.users.application.dto.filter.PatientFilter;
 import com.java.fiap.users.application.dto.form.PatientForm;
 import com.java.fiap.users.application.service.PatientService;
 import com.java.fiap.users.application.util.ApiMapping;
+import com.java.fiap.users.common.RoleName;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -31,6 +33,7 @@ public class PatientController {
     return ResponseEntity.status(HttpStatus.CREATED).body(patientService.addPatient(patientForm));
   }
 
+  @PreAuthorize("hasAnyRole('" + RoleName.DOCTOR + "', '" + RoleName.ADMIN + "')")
   @GetMapping(ApiMapping.Actions.LIST)
   public ResponseEntity<Page<PatientDTO>> listPatients(
       @PageableDefault Pageable pageable,
@@ -54,17 +57,21 @@ public class PatientController {
         .body(patientService.getAllPatients(pageable, filter));
   }
 
+  @PreAuthorize(
+      "hasAnyRole('" + RoleName.DOCTOR + "', '" + RoleName.PATIENT + "', '" + RoleName.ADMIN + "')")
   @GetMapping(ApiMapping.Actions.DETAIL)
   public ResponseEntity<PatientDTO> getPatientDetail(@PathVariable String id) {
     return ResponseEntity.status(HttpStatus.OK).body(patientService.getPatient(id));
   }
 
+  @PreAuthorize("hasAnyRole('" + RoleName.PATIENT + "')")
   @PutMapping(ApiMapping.Actions.EDIT)
   public ResponseEntity<PatientDTO> editPatient(
       @PathVariable String id, @RequestBody PatientForm patientForm) {
     return ResponseEntity.status(HttpStatus.OK).body(patientService.updatePatient(id, patientForm));
   }
 
+  @PreAuthorize("hasAnyRole('" + RoleName.ADMIN + "')")
   @DeleteMapping(ApiMapping.Actions.DELETE)
   public ResponseEntity<Void> deletePatient(@PathVariable String id) {
     patientService.deletePatient(id);

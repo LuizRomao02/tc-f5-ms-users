@@ -27,18 +27,13 @@ public class TokenRevocationValidationFilter extends OncePerRequestFilter {
   private static final List<RequestMatcher> PUBLIC_MATCHERS =
       List.of(
           new AntPathRequestMatcher("/swagger-ui/**"),
-          new AntPathRequestMatcher("/v3/api-docs/**"),
-          new AntPathRequestMatcher("/auth/**"));
+          new AntPathRequestMatcher("/v3/api-docs/**"));
 
   @Override
   protected void doFilterInternal(
       HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
       throws ServletException, IOException {
 
-    // Primeiro deixe o filtro padrão processar a autenticação
-    filterChain.doFilter(request, response);
-
-    // Depois verifique se precisamos validar o token
     if (shouldNotValidate(request)) {
       return;
     }
@@ -50,7 +45,12 @@ public class TokenRevocationValidationFilter extends OncePerRequestFilter {
     }
 
     JwtAuthenticationToken jwtAuth = (JwtAuthenticationToken) authentication;
+
     validateTokenRevocation(jwtAuth, response);
+
+    SecurityContextHolder.getContext().setAuthentication(authentication);
+
+    filterChain.doFilter(request, response);
   }
 
   private boolean shouldNotValidate(HttpServletRequest request) {
@@ -67,11 +67,15 @@ public class TokenRevocationValidationFilter extends OncePerRequestFilter {
     Function<TokenValidationRequest, Boolean> validationFunction =
         functionCatalog.lookup("validateTokenRevocation");
 
-    if (validationFunction != null && !validationFunction.apply(validationRequest)) {
-      SecurityContextHolder.clearContext();
-      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-      response.getWriter().write("Token has been revoked");
-      response.flushBuffer();
+    if (validationFunction != null) {
+      Boolean result = validationFunction.apply(validationRequest);
+
+      if (Boolean.FALSE.equals(result)) {
+        SecurityContextHolder.clearContext();
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        response.getWriter().write("Token has been revoked");
+        response.flushBuffer();
+      }
     }
   }
 }
