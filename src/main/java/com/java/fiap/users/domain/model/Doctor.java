@@ -28,8 +28,7 @@ public class Doctor extends BaseEntity {
   @Column(nullable = false)
   private String email;
 
-  @Transient
-  private String password;
+  @Transient private String password;
 
   @ManyToMany
   @JoinTable(
