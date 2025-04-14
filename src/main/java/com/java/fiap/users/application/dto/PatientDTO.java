@@ -2,7 +2,6 @@ package com.java.fiap.users.application.dto;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,12 +14,12 @@ import lombok.NoArgsConstructor;
 public class PatientDTO {
 
   private String id;
-  private String name;
+  private String firstName;
+  private String lastName;
   private LocalDate birthDate;
   private String cpf;
   private String phone;
   private String email;
-  private List<SpecialtyBasicDTO> specialties;
   private LocalDateTime createdAt;
   private LocalDateTime updatedAt;
 }

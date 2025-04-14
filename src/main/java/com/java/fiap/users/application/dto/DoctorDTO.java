@@ -14,7 +14,8 @@ import lombok.NoArgsConstructor;
 public class DoctorDTO {
 
   private String id;
-  private String name;
+  private String firstName;
+  private String lastName;
   private String crm;
   private String email;
   private List<SpecialtyBasicDTO> specialties;
