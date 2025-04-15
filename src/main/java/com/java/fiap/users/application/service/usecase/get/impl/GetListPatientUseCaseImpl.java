@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-class GetListPatientUseCaseImpl implements GetListPatientUseCase {
+public class GetListPatientUseCaseImpl implements GetListPatientUseCase {
 
   private final PatientRepository patientRepository;
   private final PatientSpecification patientSpecification;
